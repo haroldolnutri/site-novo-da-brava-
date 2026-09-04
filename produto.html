@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produto | Brava Canecas</title>
+<meta name="description" content="Detalhes do produto na Brava Canecas, catálogo digital de canecas e xícaras personalizadas.">
+<meta name="theme-color" content="#7c3f27">
+<link rel="icon" href="assets/capa.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+<header class="top">
+  <div class="wrap nav">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="logo"><img src="assets/logo.png" alt="Logotipo Brava Canecas"></div>
+      <div class="brand">Brava Canecas<small>Catálogo digital</small></div>
+    </a>
+    <div class="spacer"></div>
+    <a class="wa-top" href="https://wa.me/558594275171" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.7 14.2c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.6 1.2-1.2 1.1-.6 2 .9 1.6 1.7 2.1 3.1 2.8.2.1.4.1.5-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.9.3.1.5.2.5.4.1.2.1.7-.1 1.2Z"/></svg>
+      <span class="long">Fale conosco</span><span class="short">WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<main id="main" class="wrap detail">
+  <nav class="breadcrumb" aria-label="Trilha de navegação">
+    <a href="index.html">Catálogo</a>
+    <span>/</span>
+    <a id="crumbCat" href="index.html">Categoria</a>
+    <span>/</span>
+    <span id="crumbName" style="color:var(--ink-soft)">Produto</span>
+  </nav>
+
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    Voltar ao catálogo
+  </a>
+
+  <div id="app"><!-- preenchido via product.js --></div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="logo"><img src="assets/logo.png" alt="Logotipo Brava Canecas"></div>
+        <h5>Brava Canecas</h5>
+      </div>
+      <p>Canecas, xícaras e kits personalizados para presentear com afeto, direto do catálogo para o WhatsApp.</p>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h6>Catálogo</h6>
+        <a href="index.html">Todos os produtos</a>
+        <a href="https://canva.link/ahxp8y3r3so7f2g" target="_blank" rel="noopener">Catálogo de artes</a>
+      </div>
+      <div class="col">
+        <h6>Atendimento</h6>
+        <a href="https://wa.me/558594275171" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>Graziano &amp; Brava Comércio e Serviços LTDA, CNPJ 06.277.827/0001-23</span>
+    <span>© Todos os direitos reservados. <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobileCta"></div>
+
+<div class="float-stack">
+  <button class="to-top" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+</div>
+
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script src="product.js"></script>
+</body>
+</html>
