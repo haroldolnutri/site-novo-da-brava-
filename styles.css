@@ -222,6 +222,21 @@ h1,h2,h3,p{margin:0}
 .toolbar-head .muted{font-size:11.5px}
 .result-count{font-size:12px;font-weight:700;color:var(--brand);background:var(--gold-light);padding:6px 11px;border-radius:999px;white-space:nowrap}
 
+/* barra de busca + filtros fixa no topo ao rolar (celular e tablet):
+   deixa a navegação mais intuitiva em listas longas de produtos */
+@media (max-width:899.98px){
+  .toolbar-sticky{
+    position:sticky;top:var(--header-h);z-index:35;
+    margin:0 -18px;padding:8px 18px 12px;
+    background:rgba(251,243,231,.94);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line-soft);
+  }
+}
+@media (min-width:600px) and (max-width:899.98px){
+  .toolbar-sticky{margin:0 -28px;padding:8px 28px 12px}
+}
+
 .search-row{display:flex;gap:9px;margin-bottom:12px}
 .search{
   flex:1;height:52px;background:var(--paper);border:1.5px solid var(--line);
@@ -249,7 +264,7 @@ h1,h2,h3,p{margin:0}
 .chip{
   flex:none;display:inline-flex;align-items:center;gap:6px;
   border:1.5px solid var(--line);background:var(--paper);color:var(--brand-dark);
-  padding:9px 15px;border-radius:999px;font-weight:700;font-size:13px;
+  min-height:40px;padding:9px 15px;border-radius:999px;font-weight:700;font-size:13px;
   transition:background .15s,color .15s,border-color .15s,transform .1s;
 }
 .chip:active{transform:scale(.96)}
@@ -261,9 +276,14 @@ h1,h2,h3,p{margin:0}
 /* ---------- 7. Grade de produtos ---------- */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(154px,1fr));
-  gap:clamp(10px,2.6vw,20px);
+  /* 2 colunas garantidas em qualquer celular (evita 1 coluna larga
+     em telas estreitas, que antes podia acontecer com auto-fill) */
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(9px,2.6vw,20px);
   padding-bottom:10px;
+}
+@media (min-width:480px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 }
 .card{
   position:relative;

@@ -118,21 +118,23 @@
       <span class="result-count" id="count" aria-live="polite">produtos</span>
     </div>
 
-    <div class="search-row">
-      <div class="search" id="searchBox">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="q" type="search" inputmode="search" placeholder="Buscar por nome, categoria ou detalhe..." autocomplete="off">
-        <button class="clear" id="clearSearch" type="button" aria-label="Limpar busca">✕</button>
+    <div class="toolbar-sticky">
+      <div class="search-row">
+        <div class="search" id="searchBox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" type="search" inputmode="search" placeholder="Buscar por nome, categoria ou detalhe..." autocomplete="off">
+          <button class="clear" id="clearSearch" type="button" aria-label="Limpar busca">✕</button>
+        </div>
+        <select class="sort-select" id="sort" aria-label="Ordenar produtos">
+          <option value="relevancia">Relevância</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+          <option value="az">Nome A–Z</option>
+        </select>
       </div>
-      <select class="sort-select" id="sort" aria-label="Ordenar produtos">
-        <option value="relevancia">Relevância</option>
-        <option value="menor">Menor preço</option>
-        <option value="maior">Maior preço</option>
-        <option value="az">Nome A–Z</option>
-      </select>
-    </div>
 
-    <div class="chip-row" id="chips" role="tablist" aria-label="Filtrar por categoria"></div>
+      <div class="chip-row" id="chips" role="tablist" aria-label="Filtrar por categoria"></div>
+    </div>
 
     <div class="grid" id="grid" aria-live="polite"></div>
 

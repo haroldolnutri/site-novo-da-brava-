@@ -3,7 +3,7 @@ window.PRODUCTS = [
     "name": "Bloquinho",
     "price": "R$ 18,00",
     "page": 34,
-    "category": "Acessórios",
+    "category": "Decoração e Papelaria",
     "image": "bloquinho-2.webp",
     "pageImage": "pagina-34.webp",
     "tiers": [
@@ -26,7 +26,7 @@ window.PRODUCTS = [
     "name": "Bolsinha (Necessaire) Personalizada",
     "price": "R$ 23,00",
     "page": 33,
-    "category": "Acessórios",
+    "category": "Decoração e Papelaria",
     "image": "bolsinha-necessaire-personalizada-2.webp",
     "pageImage": "pagina-33.webp",
     "tiers": [
@@ -49,7 +49,7 @@ window.PRODUCTS = [
     "name": "Porta Retrato de Tricotin",
     "price": "R$ 25,00",
     "page": 34,
-    "category": "Acessórios",
+    "category": "Decoração e Papelaria",
     "image": "porta-retrato-de-tricotin-2.webp",
     "pageImage": "pagina-34.webp",
     "tiers": [
@@ -880,7 +880,7 @@ window.PRODUCTS = [
   {
     "name": "Pedra de Ardósia Personalizada 15x10cm",
     "price": "R$ 69,90",
-    "category": "Acessórios",
+    "category": "Decoração e Papelaria",
     "image": "pedra-de-ardosia-personalizada-15x10cm.webp",
     "gallery": [
       "pedra-de-ardosia-personalizada-15x10cm-extra.webp",
