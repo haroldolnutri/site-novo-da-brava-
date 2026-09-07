@@ -43,7 +43,7 @@
     const fav = isFavorite(p);
     const list = qtyTiers(p);
     const tiers = list.map((t, idx) => `
-      <div class="tier ${idx === list.length - 1 && list.length > 1 ? 'best' : ''}"><span>${t.qty}+ peças</span><strong>${esc(t.price)}</strong></div>`).join('');
+      <div class="tier ${idx === list.length - 1 && list.length > 1 ? 'best' : ''}"><span>${t.qty}+ un.</span><strong>${esc(t.price)}</strong></div>`).join('');
     return `
       <article class="card">
         <a class="photo" href="produto.html?id=${i}" aria-label="Ver detalhes de ${esc(p.name)}">
@@ -106,10 +106,20 @@
       </div>
 
       <div class="panel">
-        <span class="cat-tag">${esc(product.category)}</span>
+        <div class="panel-head">
+          <span class="cat-tag">${esc(product.category)}</span>
+          <div class="icon-actions">
+            <button id="favBtnSecondary" class="icon-action" aria-pressed="${fav}" aria-label="${fav ? 'Remover dos favoritos' : 'Favoritar produto'}" title="Favoritar">${heartIcon(fav)}</button>
+            <button id="shareBtn" class="icon-action" aria-label="Compartilhar produto" title="Compartilhar">${shareIcon}</button>
+          </div>
+        </div>
+
         <h1>${esc(product.name)}</h1>
-        <div class="detail-price">${esc(product.price)}</div>
-        <div class="unit-label">valor unitário</div>
+
+        <div class="price-block">
+          <div class="detail-price">${esc(product.price)}</div>
+          <div class="unit-label">valor unitário</div>
+        </div>
 
         ${product.description ? `<p class="desc">${esc(product.description)}</p>` : ''}
 
@@ -117,20 +127,16 @@
           <div class="price-table">
             <span class="label">Preço especial por quantidade</span>
             ${tiers.map((t, idx) => `
-              <div class="price-row ${idx === tiers.length - 1 && tiers.length > 1 ? 'best' : ''}"><span>${t.qty}+ peças</span><strong>${esc(t.price)}</strong></div>`).join('')}
+              <div class="price-row ${idx === tiers.length - 1 && tiers.length > 1 ? 'best' : ''}"><span>A partir de ${t.qty} peças</span><strong>${esc(t.price)}</strong></div>`).join('')}
             <span class="price-table-note">Desconto por quantidade válido para pagamento via Pix</span>
           </div>` : ''}
 
-        <a class="art-link" href="https://canva.link/ahxp8y3r3so7f2g" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
-          Ver catálogo de artes para personalizar
-        </a>
-
-        <a class="bigwa" target="_blank" rel="noopener" href="${waLink(product, WA)}">${waIcon}Pedir pelo WhatsApp</a>
-
-        <div class="secondary-actions">
-          <button id="favBtnSecondary" aria-pressed="${fav}">${heartIcon(fav)} ${fav ? 'Favorito' : 'Favoritar'}</button>
-          <button id="shareBtn">${shareIcon} Compartilhar</button>
+        <div class="cta-group">
+          <a class="bigwa" target="_blank" rel="noopener" href="${waLink(product, WA)}">${waIcon}Pedir pelo WhatsApp</a>
+          <a class="art-link" href="https://canva.link/ahxp8y3r3so7f2g" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+            Ver catálogo de artes para personalizar
+          </a>
         </div>
 
         ${product.pageImage ? `
@@ -169,7 +175,8 @@
     main.setAttribute('aria-pressed', String(nowFav));
     main.innerHTML = heartIcon(nowFav);
     secondary.setAttribute('aria-pressed', String(nowFav));
-    secondary.innerHTML = `${heartIcon(nowFav)} ${nowFav ? 'Favorito' : 'Favoritar'}`;
+    secondary.setAttribute('aria-label', nowFav ? 'Remover dos favoritos' : 'Favoritar produto');
+    secondary.innerHTML = heartIcon(nowFav);
   }
   function handleFavClick() {
     const nowFav = toggleFavorite(product);

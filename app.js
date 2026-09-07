@@ -66,7 +66,7 @@
     const fav = isFavorite(p);
     const list = qtyTiers(p);
     const tiers = list.map((t, idx) => `
-      <div class="tier ${idx === list.length - 1 && list.length > 1 ? 'best' : ''}"><span>${t.qty}+ peças</span><strong>${esc(t.price)}</strong></div>`).join('');
+      <div class="tier ${idx === list.length - 1 && list.length > 1 ? 'best' : ''}"><span>${t.qty}+ un.</span><strong>${esc(t.price)}</strong></div>`).join('');
 
     return `
       <article class="card">

@@ -310,18 +310,27 @@ h1,h2,h3,p{margin:0}
 .price{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--brand);margin-top:2px}
 .unit-label{font-size:10px;color:var(--muted)}
 
-.tiers{display:flex;flex-direction:column;gap:5px;margin:9px 0}
-.tier{
-  display:flex;justify-content:space-between;align-items:center;gap:6px;
-  background:var(--cream);border:1px dashed var(--line);
-  border-radius:9px;padding:6px 9px;font-size:10.5px;color:var(--ink-soft);
+.tiers{
+  display:flex;flex-direction:column;
+  margin:8px 0;border:1px solid var(--line-soft);border-radius:10px;
+  overflow:hidden;background:var(--paper);
 }
-.tier strong{color:var(--brand);font-size:11.5px}
-.tier.best{background:var(--gold-light);border:1px solid var(--gold);border-style:solid}
+.tier{
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px;
+  padding:5px 8px;font-size:10.5px;color:var(--ink-soft);font-weight:600;
+  border-bottom:1px dashed var(--line);
+}
+.tier:last-child{border-bottom:0}
+.tier span{min-width:0}
+.tier strong{
+  color:var(--brand);font-size:12px;font-weight:800;
+  white-space:nowrap;justify-self:end;font-variant-numeric:tabular-nums;
+}
+.tier.best{background:var(--gold-light)}
 .tier.best strong{color:var(--brand-dark)}
 .tiers-note{
-  display:inline-block;font-size:9px;font-weight:800;color:#fff;background:#1f9d90;
-  border-radius:6px;padding:3px 7px;margin:-1px 0 5px;line-height:1.3;
+  display:block;font-size:9px;font-weight:700;color:var(--muted);
+  padding:0;margin:-2px 0 6px;line-height:1.35;letter-spacing:.01em;
 }
 
 .actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding-top:7px}
@@ -367,19 +376,8 @@ h1,h2,h3,p{margin:0}
 .footer .col a:hover{opacity:1;text-decoration:underline}
 .footer .bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:16px;font-size:11.5px;color:#c8ac95;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* ---------- 10. Flutuantes: WhatsApp + topo ---------- */
+/* ---------- 10. Flutuante: voltar ao topo ---------- */
 .float-stack{position:fixed;right:16px;bottom:calc(16px + var(--safe-b));display:flex;flex-direction:column;gap:10px;z-index:50}
-.float{
-  width:56px;height:56px;border-radius:50%;background:var(--green);
-  display:grid;place-items:center;box-shadow:0 14px 30px rgba(37,211,102,.4);
-  position:relative;
-}
-.float svg{width:27px;height:27px;color:var(--green-ink)}
-.float::after{
-  content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--green);
-  animation:pulse 2.4s ease-out infinite;
-}
-@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.55);opacity:0}}
 .to-top{
   width:42px;height:42px;border-radius:50%;background:var(--paper);border:1px solid var(--line);
   display:grid;place-items:center;box-shadow:var(--shadow-md);align-self:flex-end;
@@ -422,12 +420,25 @@ h1,h2,h3,p{margin:0}
 .detail-photo .fav-btn svg{width:19px;height:19px}
 
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-md)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
 .panel .cat-tag{
   display:inline-flex;align-items:center;gap:6px;background:var(--gold-light);color:var(--brand);
   font-size:11px;font-weight:800;padding:6px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;
 }
-.panel h1{font-family:var(--font-display);color:var(--ink);font-size:clamp(26px,6vw,36px);line-height:1.05;letter-spacing:-.015em;margin:12px 0 6px;font-weight:700}
-.detail-price{font-family:var(--font-display);font-size:clamp(26px,5.5vw,32px);font-weight:700;color:var(--brand);margin:4px 0 2px}
+.icon-actions{display:flex;align-items:center;gap:8px;flex:none}
+.icon-action{
+  width:38px;height:38px;border-radius:50%;flex:none;
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);
+  display:grid;place-items:center;transition:transform .15s,border-color .15s,color .15s,background .15s;
+}
+.icon-action svg{width:16px;height:16px}
+.icon-action:hover{border-color:var(--brand);color:var(--brand)}
+.icon-action:active{transform:scale(.9)}
+.icon-action[aria-pressed="true"]{border-color:var(--rose);color:var(--rose);background:var(--gold-light)}
+.panel h1{font-family:var(--font-display);color:var(--ink);font-size:clamp(26px,6vw,36px);line-height:1.05;letter-spacing:-.015em;margin:0 0 8px;font-weight:700}
+.price-block{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 4px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
+.detail-price{font-family:var(--font-display);font-size:clamp(26px,5.5vw,32px);font-weight:700;color:var(--brand);margin:0}
+.price-block .unit-label{margin-bottom:2px}
 
 .gallery-thumbs{display:flex;gap:8px;margin:12px 0 2px}
 .gthumb{
@@ -439,60 +450,50 @@ h1,h2,h3,p{margin:0}
 .gthumb:hover{opacity:1}
 .desc{color:var(--ink-soft);line-height:1.6;font-size:14.5px;margin:16px 0 4px;padding:14px 15px;background:var(--cream);border-radius:14px;border:1px solid var(--line-soft)}
 
-.price-table{display:flex;flex-direction:column;gap:9px;margin:18px 0}
-.price-table .label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:2px}
-.price-table-note{
-  display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;
-  color:#fff;background:#1f9d90;border-radius:10px;padding:9px 12px;margin-top:4px;
+.price-table{
+  display:flex;flex-direction:column;gap:0;margin:18px 0;
+  border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;
 }
-.price-table-note::before{
-  content:"";flex:none;width:16px;height:16px;
-  background:#fff;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 3a2.5 2.5 0 0 0-2.5 2.5V8H6a2.5 2.5 0 0 0 0 5h2.5v2.5A2.5 2.5 0 0 0 11 18h2a2.5 2.5 0 0 0 2.5-2.5V13H18a2.5 2.5 0 0 0 0-5h-2.5V5.5A2.5 2.5 0 0 0 13 3Z'/%3E%3C/svg%3E") center/contain no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 3a2.5 2.5 0 0 0-2.5 2.5V8H6a2.5 2.5 0 0 0 0 5h2.5v2.5A2.5 2.5 0 0 0 11 18h2a2.5 2.5 0 0 0 2.5-2.5V13H18a2.5 2.5 0 0 0 0-5h-2.5V5.5A2.5 2.5 0 0 0 13 3Z'/%3E%3C/svg%3E") center/contain no-repeat;
+.price-table .label{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+  padding:11px 14px 8px;background:var(--cream);
+}
+.price-table-note{
+  display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;
+  color:var(--ink-soft);background:transparent;padding:9px 14px 12px;
 }
 
 .art-link{
   display:flex;align-items:center;justify-content:center;gap:9px;
-  width:100%;min-height:52px;font-size:14.5px;font-weight:800;
-  color:#fff;background:var(--brand-dark);border:1.5px solid var(--brand-dark);
-  border-radius:16px;padding:0 16px;margin:16px 0 0;
-  box-shadow:0 12px 26px rgba(71,37,26,.28);transition:transform .15s;
+  width:100%;min-height:50px;font-size:13.5px;font-weight:800;
+  color:#fff;background:var(--brand);border:1.5px solid var(--brand);
+  border-radius:16px;padding:0 16px;margin:0;
+  box-shadow:0 10px 22px rgba(124,63,39,.28);transition:transform .15s,box-shadow .15s;
 }
-.art-link:hover{transform:translateY(-2px)}
-.art-link svg{width:19px;height:19px;flex:none;color:var(--gold-light)}
+.art-link:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(124,63,39,.36)}
+.art-link svg{width:18px;height:18px;flex:none;color:var(--gold-light)}
 .price-row{
-  position:relative;display:flex;align-items:center;justify-content:space-between;
-  padding:13px 16px 13px 20px;border-radius:0 14px 14px 0;background:var(--cream);border:1px dashed var(--gold);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;background:var(--paper);border-top:1px solid var(--line-soft);
 }
-.price-row::before{
-  content:"";position:absolute;left:-1px;top:50%;transform:translateY(-50%);
-  width:12px;height:12px;border-radius:50%;background:var(--cream);border:1.5px dashed var(--gold);
-  box-shadow:-3px 0 0 -1px var(--paper);
-}
+.price-table>.price-row:first-of-type{border-top:1px solid var(--line-soft)}
 .price-row span{font-size:13px;color:var(--ink-soft);font-weight:600}
 .price-row strong{color:var(--brand);font-family:var(--font-display);font-size:17px;font-weight:700}
-.price-row.best{background:var(--gold-light);border-style:solid}
-.price-row.best::before{background:var(--gold-light)}
+.price-row.best{background:var(--gold-light)}
 .price-row.best strong{color:var(--brand-dark)}
-.price-row.best::after{
-  content:"melhor preço";position:absolute;right:16px;top:-9px;
-  background:var(--gold);color:#fff;font-size:9px;font-weight:800;text-transform:uppercase;
-  letter-spacing:.04em;padding:3px 8px;border-radius:999px;
+.price-row.best span::after{
+  content:"melhor preço";margin-left:8px;
+  color:var(--brand-dark);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
 }
 
+.cta-group{display:flex;flex-direction:column;gap:10px;margin-top:18px}
 .bigwa{
   width:100%;min-height:56px;border-radius:16px;background:var(--green);font-weight:800;font-size:15px;
-  display:flex;align-items:center;justify-content:center;gap:9px;color:var(--green-ink);margin-top:14px;
+  display:flex;align-items:center;justify-content:center;gap:9px;color:var(--green-ink);margin:0;
   box-shadow:0 12px 26px rgba(37,211,102,.3);transition:transform .15s;
 }
 .bigwa:hover{transform:translateY(-2px)}
 .bigwa svg{width:20px;height:20px}
-.secondary-actions{display:flex;gap:9px;margin-top:10px}
-.secondary-actions button{
-  flex:1;min-height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);
-  font-weight:700;font-size:12.5px;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.secondary-actions svg{width:15px;height:15px}
 
 .source{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
 .source-toggle{
@@ -510,6 +511,12 @@ h1,h2,h3,p{margin:0}
 .related-row{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
 .related-row::-webkit-scrollbar{display:none}
 .related-row .card{min-width:150px;width:150px;flex:none}
+
+/* no celular a barra fixa do rodapé já é o CTA de WhatsApp;
+   o botão dentro do painel some para não duplicar a mesma ação */
+@media (max-width:599.98px){
+  .panel .bigwa{display:none}
+}
 
 .mobile-cta{
   position:fixed;left:0;right:0;bottom:0;z-index:45;
